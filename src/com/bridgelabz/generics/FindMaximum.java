@@ -1,57 +1,37 @@
 package com.bridgelabz.generics;
 
 
-public class FindMaximum {
+public class FindMaximum <T extends Comparable<T>>{
+    T a,b,c;
+    // parameterized Constructor to handle different type of values
+    FindMaximum(T a, T b, T c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
 
-    // UC1- finding maximum value of 3 integers
-    public static <T extends Comparable<T>> T maxInteger(T a, T b, T c) {
+    // Check max value out of the given 3 Integer values
+    public T compareTo() {
 
-        if (a.compareTo(b) > 0) {
+        if(a.compareTo(b) > 0) {
             return a;
-        } else if (c.compareTo(b) > 0) {
+        } else if(c.compareTo(b) > 0) {
             return c;
         } else {
             return b;
         }
     }
 
-    // UC2- finding maximum value of 3 floats
-    public static <T extends Comparable<T>> T maxFloat(T A, T B, T C) {
-
-        if (A.compareTo(B) > 0) {
-            return A;
-        } else if (C.compareTo(B) > 0) {
-            return C;
-        } else {
-            return B;
-        }
-    }
-
-    // UC3- finding maximum value of 3 strings
-    public static <T extends Comparable<T>> T maxString(T str1, T str2, T str3) {
-
-        if (str1.compareTo(str2) > 0) {
-            return str1;
-        } else if (str3.compareTo(str2) > 0) {
-            return str3;
-        } else {
-            return str2;
-        }
-    }
-
     public static void main(String[] args) {
 
-        FindMaximum maxIntCompare = new FindMaximum();
-        System.out.println("Maximum of 3 Integers is : " + maxIntCompare.maxInteger(10, 20, 30));
-
-        FindMaximum maxFloatCompare = new FindMaximum();
-        System.out.println("Maximum of 3 Floats is : " + maxFloatCompare.maxFloat(10.10f, 20.20f, 30.30f));
-
-        FindMaximum maxStringCompare = new FindMaximum();
-        System.out.println("Maximum of 3 Strings is : " + maxStringCompare.maxString("abc", "xyz", "mno"));
-
+        // created Generic Integer Object to compare an Integer values
+        FindMaximum<Integer> maxIntCompare = new FindMaximum<>(10,20,30);
+        System.out.println("Maximum value out of the given 3 Integer values is : "+maxIntCompare.compareTo());
+        // created Generic Float Object to compare FLoat values
+        FindMaximum<Float> maxFloatCompare = new FindMaximum<>(10.10f,20.20f,30.30f);
+        System.out.println("Maximum value out of the given 3 Float values is : "+maxFloatCompare.compareTo());
+        // created Generic String Object to compare String values
+        FindMaximum<String> maxStringCompare = new FindMaximum<>("abc","xyz","mno");
+        System.out.println("Maximum value out of the given 3 String values is : "+maxStringCompare.compareTo());
     }
 }
-
-
-
